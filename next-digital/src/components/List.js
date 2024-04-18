@@ -1,8 +1,19 @@
 import PropTypes from 'prop-types';
 import { USER } from '../models/user';
+import { useNavigate } from 'react-router-dom';
 
 function List({ data }) {
-  return data.map((user) => <li key={user.id}>{user.name}</li>);
+  const navigate = useNavigate();
+
+  const handleClick = ({ user }) => {
+    navigate(`/user/${user.id}`, { state: { user } });
+  };
+
+  return data.map((user) => (
+    <li key={user.id} onClick={() => handleClick({ user })}>
+      {user.name}
+    </li>
+  ));
 }
 
 List.propTypes = {
