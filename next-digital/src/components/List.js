@@ -10,7 +10,7 @@ function List({ data }) {
   };
 
   return data.map((user) => (
-    <li key={user.id} onClick={() => handleClick({ user })}>
+    <li style={{ cursor: 'pointer' }} key={user.id} onClick={() => handleClick({ user })}>
       {user.name}
     </li>
   ));
