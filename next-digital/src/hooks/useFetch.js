@@ -3,14 +3,19 @@ import { useState, useEffect } from 'react';
 
 function useFetch({ url }) {
   const [data, setData] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetch(url)
-      .then((res) => res.json())
-      .then((data) => setData(data));
-  }, []);
+      .then((res) => {
+        if (!res.ok) throw new Error(res.statusText);
+        return res.json();
+      })
+      .then((data) => setData(data))
+      .catch((error) => setError(error));
+  }, [url]);
 
-  return { data };
+  return { data, error };
 }
 
 useFetch.propTypes = {
