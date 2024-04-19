@@ -9,10 +9,11 @@ function UserDetailPage() {
     state: { user },
   } = useLocation();
 
-  const { data: photos } = useFetch({ url: PHOTOS_URL });
+  const { data: photos, error } = useFetch({ url: PHOTOS_URL });
 
   return (
     <>
+      {error && <p>Ha habido un error, inténtalo de nuevo más tarde!</p>}
       <Card user={user} photos={photos} />
       <button style={{ cursor: 'pointer' }} onClick={() => navigate('/')}>
         Volver
