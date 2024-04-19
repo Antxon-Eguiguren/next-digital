@@ -6,13 +6,22 @@ function useFetch({ url }) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch(url)
-      .then((res) => {
-        if (!res.ok) throw new Error(res.statusText);
-        return res.json();
-      })
-      .then((data) => setData(data))
-      .catch((error) => setError(error));
+    const cached = localStorage.getItem(url);
+
+    if (cached) {
+      setData(JSON.parse(cached));
+    } else {
+      fetch(url)
+        .then((res) => {
+          if (!res.ok) throw new Error(res.statusText);
+          return res.json();
+        })
+        .then((data) => {
+          localStorage.setItem(url, JSON.stringify(data));
+          setData(data);
+        })
+        .catch((error) => setError(error));
+    }
   }, [url]);
 
   return { data, error };
