@@ -1,11 +1,13 @@
 import PropTypes from 'prop-types';
 import { USER } from '../models/user';
 import { PHOTO } from '../models/photo';
+import { TODO } from '../models/todo';
 import { USERS_URL } from '../utils/constants';
 import useFetch from '../hooks/useFetch';
 import AlbumList from './AlbumList';
+import TodoList from './TodoList';
 
-function Card({ user, photos }) {
+function Card({ user, photos, todos }) {
   const { data: albums, error } = useFetch({ url: `${USERS_URL}/${user.id}/albums` });
 
   return (
@@ -20,6 +22,8 @@ function Card({ user, photos }) {
         <p>Empresa: {user.company.name}</p>
         <p>Album list:</p>
         <AlbumList albums={albums} photos={photos} />
+        <p>TODO list:</p>
+        <TodoList todos={todos} />
       </div>
     </>
   );
@@ -28,6 +32,7 @@ function Card({ user, photos }) {
 Card.propTypes = {
   user: PropTypes.shape(USER),
   photos: PropTypes.arrayOf(PropTypes.shape(PHOTO)),
+  todos: PropTypes.arrayOf(PropTypes.shape(TODO)),
 };
 
 export default Card;
