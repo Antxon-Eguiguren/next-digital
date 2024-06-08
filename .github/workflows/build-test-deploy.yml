@@ -11,19 +11,19 @@ jobs:
         with:
           node-version: 20.9.0
       - name: Install dependencies
-        working-directory: ./next-digital
+        working-directory: ./next-digital/next-digital
         run: npm install --legacy-peer-deps
       - name: Execute tests
-        working-directory: ./next-digital
+        working-directory: ./next-digital/next-digital
         run: npm run test
       - name: Build project
-        working-directory: ./next-digital
+        working-directory: ./next-digital/next-digital
         run: npm run build
       - name: Upload artifact to enable deployment
         uses: actions/upload-artifact@v4
         with:
           name: production-files
-          path: ./next-digital/build
+          path: ./next-digital/next-digital/build
           if-no-files-found: error
   deploy:
     needs: build
@@ -33,8 +33,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: production-files
-          path: ./next-digital/build
-          if-no-files-found: error
+          path: ./next-digital/next-digital/build
       - name: Deploy to GitHub pages
         uses: peaceiris/actions-gh-pages@v4
         with:
