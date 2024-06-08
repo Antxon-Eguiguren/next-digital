@@ -35,7 +35,7 @@ jobs:
           name: production-files
           path: ./next-digital/build
           if-no-files-found: error
-      - name: Deploy to GitHub Pages
+      - name: Deploy to GitHub pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
