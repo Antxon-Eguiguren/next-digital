@@ -11,7 +11,7 @@ jobs:
         with:
           node-version: 20.9.0
       - name: Install dependencies
-        run: cd ../../next-digital/ & npm install
+        run: cd ../../next-digital && npm install
       - name: Execute tests
         run: npm run test
       - name: Build project
