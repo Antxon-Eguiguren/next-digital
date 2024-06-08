@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/next-digital/static/css/main.a6219e32.css",
+    "main.js": "/next-digital/static/js/main.77700b15.js",
+    "index.html": "/next-digital/index.html",
+    "main.a6219e32.css.map": "/next-digital/static/css/main.a6219e32.css.map",
+    "main.77700b15.js.map": "/next-digital/static/js/main.77700b15.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a6219e32.css",
+    "static/js/main.77700b15.js"
+  ]
+}
