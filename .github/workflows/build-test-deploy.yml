@@ -12,10 +12,15 @@ jobs:
           node-version: 20.9.0
       - name: Install dependencies
         working-directory: ./next-digital
-        run: npm install
+        run: npm install --legacy-peer-deps
       - name: Execute tests
+        working-directory: ./next-digital
         run: npm run test
+      - name: Execute linter
+        working-directory: ./next-digital
+        run: npm run lint
       - name: Build project
+        working-directory: ./next-digital
         run: npm run build
       - name: Upload artifact to enable deployment
         uses: actions/upload-artifact@v3
