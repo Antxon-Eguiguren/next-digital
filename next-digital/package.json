@@ -2,7 +2,6 @@
   "name": "next-digital",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://antxon-eguiguren.github.io/next-digital/",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
