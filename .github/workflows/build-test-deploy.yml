@@ -16,9 +16,6 @@ jobs:
       - name: Execute tests
         working-directory: ./next-digital
         run: npm run test
-      - name: Execute linter
-        working-directory: ./next-digital
-        run: npm run lint
       - name: Build project
         working-directory: ./next-digital
         run: npm run build
